@@ -49,13 +49,7 @@
   cursor:pointer;
 }
 
-#numbers-panel .number.selected {
-  cursor:not-allowed;
-  background-color: #ddd;
-  color:#bbb;
-}
-
-#numbers-panel .number.used {
+#numbers-panel .number.confirmed {
   cursor:not-allowed;
   background-color: #5cb85c;
   color:#fff;
