@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import {Grid, Row, Col, PageHeader} from 'react-bootstrap';
 import _ from 'lodash';
 import StarPanel from './components/StarPanel';
-import CustomPanel from './components/CustomPanel';
 import NumbersPanel from './components/NumbersPanel';
 import OperationPanel from './components/OperationPanel';
+import SelectedNumbersPanel from './components/SelectedNumbersPanel';
 import './App.css';
 
 
@@ -18,19 +18,17 @@ class App extends Component {
     super();
 
     this.handleRefresh = this.handleRefresh.bind(this);
+    this.handleOnNumberSelected = this.handleOnNumberSelected.bind(this);
+    this.handleOnNumberUnSelected = this.handleOnNumberUnSelected.bind(this);
 
     this.state = {
       "title": "Math Skills Game", 
       "starNumbers": _.random(1, 9), 
       "numberOptions": 9, // From 1 to 9
       "selectedNumbers" : [],
+      "maxRefresh": 5,
       "remainingRefresh": 5
     }
-  }
-
-  handleOnNumberSelect(selectedNumber) {
-    console.log(selectedNumber);
-    console.log(this.state.selectedNumbers);
   }
 
   handleRefresh() {
@@ -41,6 +39,21 @@ class App extends Component {
       });
     }
   }
+
+  handleOnNumberSelected(number) {
+    this.setState({
+      "selectedNumbers": this.state.selectedNumbers.concat(number)
+    });
+  }
+
+  handleOnNumberUnSelected(unselected) {
+    this.setState({
+      "selectedNumbers": this.state.selectedNumbers.filter(number => number !== unselected)
+    });
+  }
+
+
+
   render() {
     return (
       <Grid>
@@ -52,17 +65,22 @@ class App extends Component {
           <Col md={2}>
             <OperationPanel 
               handleRefresh={this.handleRefresh}
+              maxRefresh={this.state.maxRefresh}
               remainingRefresh={this.state.remainingRefresh} 
               />
           </Col>
           <Col md={5}>
-            <CustomPanel />
+            <SelectedNumbersPanel 
+              selectedNumbers={this.state.selectedNumbers}
+              handleOnNumberUnSelected={this.handleOnNumberUnSelected} />
           </Col>
         </Row>
 
         <Row className="show-grid">
           <Col md={12}>
-            <NumbersPanel />
+            <NumbersPanel 
+              handleOnNumberSelected={this.handleOnNumberSelected}
+              selectedNumbers={this.state.selectedNumbers}/>
           </Col>
         </Row>
       </Grid>

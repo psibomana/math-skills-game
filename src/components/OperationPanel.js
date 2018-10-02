@@ -8,8 +8,14 @@ class OperationPanel extends Component {
         <Panel bsStyle="info">
           <Panel.Body>  
             <ButtonToolbar>
-              <Button bsStyle="success" block>Confirm</Button>
-              <Button bsStyle="warning" onClick={this.props.handleRefresh}  block>Redraw ({this.props.remainingRefresh})</Button>
+              <Button bsStyle="primary" block>Confirm</Button>
+              <Button 
+                bsStyle="warning" 
+                onClick={this.props.handleRefresh} 
+                disabled={this.props.remainingRefresh === 0} 
+                block>
+                Redraw ({this.props.remainingRefresh}/{this.props.maxRefresh})
+              </Button>
             </ButtonToolbar>
           </Panel.Body>
         </Panel>
