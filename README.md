@@ -1,4 +1,4 @@
-# Engagement Support Automation Frontend
+# Math Skills Game
 Develop Branch :
 [![CircleCI](https://circleci.com/gh/psibomana/math-skills-game.svg?style=svg)](https://circleci.com/gh/psibomana/math-skills-game)
 
