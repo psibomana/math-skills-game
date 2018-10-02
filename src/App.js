@@ -3,6 +3,7 @@ import {Grid, Row, Col, PageHeader} from 'react-bootstrap';
 import _ from 'lodash';
 import StarPanel from './components/StarPanel';
 import CustomPanel from './components/CustomPanel';
+import NumbersPanel from './components/NumbersPanel';
 import './App.css';
 
 
@@ -13,7 +14,8 @@ const Title = (props) => {
 class App extends Component {
   state = {
     "title": "Math Skills Game", 
-    "starNumbers": _.random(1, 9)
+    "starNumbers": _.random(1, 9), 
+    "numberOptions": 9, // From 1 to 9
   }
   render() {
     return (
@@ -33,7 +35,7 @@ class App extends Component {
 
         <Row className="show-grid">
           <Col md={12}>
-            <CustomPanel />
+            <NumbersPanel />
           </Col>
         </Row>
       </Grid>

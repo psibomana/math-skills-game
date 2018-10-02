@@ -26,3 +26,30 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+#numbers-panel .number {
+  display: inline-block;
+  margin-left: 8px;
+  margin-right: 8px;
+  margin-top:2px;
+  margin-bottom: 2px;
+  width:50px;
+  text-align: center;
+  font-size: 35px;
+  border-radius: 50%;
+  background-color: #bbb;
+  cursor:pointer;
+}
+
+#numbers-panel .number.selected {
+  cursor:not-allowed;
+  background-color: #ddd;
+  color:#bbb;
+}
+
+#numbers-panel .number.used {
+  cursor:not-allowed;
+  background-color: #5cb85c;
+  color:#fff;
+  opacity: 0.5;
+}
