@@ -1,19 +1,42 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import {Grid, Row, Col, PageHeader} from 'react-bootstrap';
+import _ from 'lodash';
+import StarPanel from './components/StarPanel';
+import CustomPanel from './components/CustomPanel';
 import './App.css';
 
+
+const Title = (props) => {
+  return <PageHeader className = "text-monospace"><center> {props.title}</center></PageHeader>
+}
+
 class App extends Component {
+  state = {
+    "title": "Math Skills Game", 
+    "starNumbers": _.random(1, 9)
+  }
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-      </div>
+      <Grid>
+        <Title title={this.state.title}/>
+        <Row className="show-grid">
+          <Col md={5}>
+            <StarPanel starNumbers={this.state.starNumbers}/>
+          </Col>
+          <Col md={2}>
+            <CustomPanel />
+          </Col>
+          <Col md={5}>
+            <CustomPanel />
+          </Col>
+        </Row>
+
+        <Row className="show-grid">
+          <Col md={12}>
+            <CustomPanel />
+          </Col>
+        </Row>
+      </Grid>
     );
   }
 }
