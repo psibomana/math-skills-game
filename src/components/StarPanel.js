@@ -12,7 +12,7 @@ class StarPanel extends Component {
     return (
         <Panel bsStyle="info">
             <Panel.Body>
-                {stars.map((star, i) => <Glyphicon style={{"font-size":"70px"}} glyph="star" key/>)}
+                {stars.map((star, i) => <Glyphicon style={{"fontSize":"70px"}} glyph="star" key={i}/>)}
             </Panel.Body>
         </Panel>
     );

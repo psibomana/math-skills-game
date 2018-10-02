@@ -4,6 +4,7 @@ import _ from 'lodash';
 import StarPanel from './components/StarPanel';
 import CustomPanel from './components/CustomPanel';
 import NumbersPanel from './components/NumbersPanel';
+import OperationPanel from './components/OperationPanel';
 import './App.css';
 
 
@@ -12,10 +13,33 @@ const Title = (props) => {
 }
 
 class App extends Component {
-  state = {
-    "title": "Math Skills Game", 
-    "starNumbers": _.random(1, 9), 
-    "numberOptions": 9, // From 1 to 9
+
+  constructor() {
+    super();
+
+    this.handleRefresh = this.handleRefresh.bind(this);
+
+    this.state = {
+      "title": "Math Skills Game", 
+      "starNumbers": _.random(1, 9), 
+      "numberOptions": 9, // From 1 to 9
+      "selectedNumbers" : [],
+      "remainingRefresh": 5
+    }
+  }
+
+  handleOnNumberSelect(selectedNumber) {
+    console.log(selectedNumber);
+    console.log(this.state.selectedNumbers);
+  }
+
+  handleRefresh() {
+    if(this.state.remainingRefresh > 0) {
+      this.setState({
+        "remainingRefresh": this.state.remainingRefresh - 1,
+        "starNumbers": _.random(1, 9), 
+      });
+    }
   }
   render() {
     return (
@@ -26,7 +50,10 @@ class App extends Component {
             <StarPanel starNumbers={this.state.starNumbers}/>
           </Col>
           <Col md={2}>
-            <CustomPanel />
+            <OperationPanel 
+              handleRefresh={this.handleRefresh}
+              remainingRefresh={this.state.remainingRefresh} 
+              />
           </Col>
           <Col md={5}>
             <CustomPanel />

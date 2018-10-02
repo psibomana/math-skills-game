@@ -27,6 +27,14 @@
   to { transform: rotate(360deg); }
 }
 
+#stars .star {
+  font-size:"70px";
+}
+
+.star {
+  font-size:"70px";
+}
+
 #numbers-panel .number {
   display: inline-block;
   margin-left: 8px;
