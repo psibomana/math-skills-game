@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import {Panel, Glyphicon} from 'react-bootstrap';
 import '../App.css';
 
-
-
 class StarPanel extends Component {
 
   render() {
