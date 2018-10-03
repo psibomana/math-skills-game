@@ -1,5 +1,5 @@
 # Math Skills Game
-Develop Branch :
+Master Branch :
 [![CircleCI](https://circleci.com/gh/psibomana/math-skills-game.svg?style=svg)](https://circleci.com/gh/psibomana/math-skills-game)
 
 Math Skills Game is an exercise used in the React: Getting Started course
